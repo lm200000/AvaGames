@@ -1,0 +1,27 @@
+﻿<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:CrossGames.Controls">
+    <Design.PreviewWith>
+        <local:TCube Width="100" Height="100" />
+    </Design.PreviewWith>
+    <ControlTheme x:Key="{x:Type local:TCube}" TargetType="local:TCube">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="local:TCube">
+                <Border
+                    BorderBrush="Black"
+                    BorderThickness="1"
+                    CornerRadius="0">
+                    <Rectangle Width="20" Height="20" />
+                    <Border.Background>
+						<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+							<GradientStop Color="{TemplateBinding TopColor}" Offset="0.0" />
+                            <GradientStop Color="{TemplateBinding BottomColor}" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

@@ -1,35 +1,38 @@
-﻿<UserControl xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="clr-namespace:CrossGames.ViewModels"
-             xmlns:u="clr-namespace:Ursa.Controls"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="CrossGames.Views.MainView"
-             x:DataType="vm:MainViewModel">
-  <Design.DataContext>
-    <vm:MainViewModel />
-  </Design.DataContext>
-  <UserControl.DataContext>
-      <vm:MainViewModel />
-  </UserControl.DataContext>
- <Grid ColumnDefinitions="Auto,*">
-        <!--<view:Page2048 Grid.Column="1"/>-->   
+﻿<UserControl
+    x:Class="CrossGames.Views.MainView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:u="clr-namespace:Ursa.Controls"
+    xmlns:vm="clr-namespace:CrossGames.ViewModels"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:DataType="vm:MainViewModel"
+    mc:Ignorable="d">
+    <Design.DataContext>
+        <vm:MainViewModel />
+    </Design.DataContext>
+    <UserControl.DataContext>
+        <vm:MainViewModel />
+    </UserControl.DataContext>
+    <Grid ColumnDefinitions="Auto,*">
+        <!--<view:Page2048 Grid.Column="1"/>-->
         <StackPanel>
             <StackPanel.Styles>
                 <Style Selector="RadioButton">
-                    <Setter Property="Theme" Value="{StaticResource PureCardRadioButton}"/>
-                    <Setter Property="IsVisible" Value="{Binding #Exp.IsExpanded}"/>
-                    <Setter Property="FontFamily" Value="{StaticResource simyou}"/>
+                    <Setter Property="Theme" Value="{StaticResource PureCardRadioButton}" />
+                    <Setter Property="IsVisible" Value="{Binding #Exp.IsExpanded}" />
+                    <Setter Property="FontFamily" Value="{StaticResource simyou}" />
                     <Style Selector="^:checked">
-                        <Setter Property="Foreground" Value="Orange"/>
+                        <Setter Property="Foreground" Value="Orange" />
                     </Style>
                 </Style>
             </StackPanel.Styles>
-            <Expander x:Name="Exp" ExpandDirection="Left"/>
-            <RadioButton Content="2048"/>
-            <RadioButton Content="Other"/>
+            <Expander x:Name="Exp" ExpandDirection="Left" />
+            <RadioButton Content="2048" />
+            <RadioButton Content="Other" />
         </StackPanel>
-        <ContentControl Grid.Column="1" Content="{Binding CurrentViewModel}"/>
+        <ContentControl Grid.Column="1" Content="{Binding CurrentViewModel}" />
     </Grid>
 </UserControl>

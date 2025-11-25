@@ -15,6 +15,7 @@
     <PackageVersion Include="Avalonia.Browser" Version="11.3.6" />
     <PackageVersion Include="Avalonia.Android" Version="11.3.9" />
     <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <PackageVersion Include="DevExpress.Xpo" Version="22.2.4" />
     <PackageVersion Include="Irihi.Ursa" Version="1.14.0" />
     <PackageVersion Include="Irihi.Ursa.Themes.Semi" Version="1.14.0" />
     <PackageVersion Include="Semi.Avalonia" Version="11.3.7.1" />

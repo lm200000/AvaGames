@@ -1,31 +1,32 @@
-﻿<Application xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="using:CrossGames"
-             xmlns:semi="https://irihi.tech/semi"
-             xmlns:u-semi="https://irihi.tech/ursa/themes/semi"
-             x:Class="CrossGames.App"
-             RequestedThemeVariant="Default">
-             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+﻿<Application
+    x:Class="CrossGames.App"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CrossGames"
+    xmlns:semi="https://irihi.tech/semi"
+    xmlns:u-semi="https://irihi.tech/ursa/themes/semi"
+    RequestedThemeVariant="Default">
+    <!--  "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options.  -->
 
     <Application.DataTemplates>
-        <local:ViewLocator/>
+        <local:ViewLocator />
     </Application.DataTemplates>
 
-     <Application.Styles>
+    <Application.Styles>
         <semi:SemiTheme Locale="zh-CN" />
-        <semi:SemiPopupAnimations/>
+        <semi:SemiPopupAnimations />
         <u-semi:SemiTheme Locale="zh-CN" />
         <Style Selector="TextBlock">
-            <Setter Property="FontFamily" Value="{DynamicResource simyou}"/>
+            <Setter Property="FontFamily" Value="{DynamicResource simyou}" />
         </Style>
         <Style Selector="SelectableTextBlock">
-			<Setter Property="FontFamily" Value="{DynamicResource simyou}"/>
+            <Setter Property="FontFamily" Value="{DynamicResource simyou}" />
         </Style>
     </Application.Styles>
-    <Application.Resources>        
-		<ResourceDictionary>
-			<ResourceDictionary.MergedDictionaries>
-				<ResourceInclude Source="ControlThemes/_index.axaml"/>
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="ControlThemes/_index.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
         <FontFamily x:Key="simyou">avares://CrossGames/Assets/Fonts/STXINGKA.TTF#华文行楷</FontFamily>

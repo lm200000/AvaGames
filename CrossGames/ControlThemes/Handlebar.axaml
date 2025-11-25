@@ -1,0 +1,60 @@
+﻿<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:CrossGames.Controls">
+    <Design.PreviewWith>
+        <local:Handlebar Width="200" Height="200" />
+    </Design.PreviewWith>
+    <ControlTheme x:Key="{x:Type local:Handlebar}" TargetType="local:Handlebar">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <ControlTemplate TargetType="local:Handlebar">
+                <Border Background="Transparent">
+                    <Grid
+                        Margin="5"
+                        ColumnDefinitions="*,*,*"
+                        ColumnSpacing="1"
+                        RowDefinitions="*,*,*"
+                        RowSpacing="1">
+                        <Grid.Styles>
+                            <Style Selector="Button">
+                                <!--<Setter Property="Width" Value="80"/>
+                        <Setter Property="Height" Value="68"/>-->
+                                <Setter Property="MinHeight" Value="60" />
+                                <Setter Property="MinWidth" Value="60" />
+                                <Setter Property="HorizontalAlignment" Value="Stretch" />
+                                <Setter Property="VerticalAlignment" Value="Stretch" />
+                                <Setter Property="CommandParameter" Value="{Binding $self.Content}" />
+                            </Style>
+                        </Grid.Styles>
+                        <Button
+                            Grid.Column="1"
+                            Command="{TemplateBinding UpCommand}"
+                            Content="↑" />
+                        <Button
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Command="{TemplateBinding LeftCommand}"
+                            Content="←" />
+                        <Button
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Command="{TemplateBinding CenterCommand}"
+                            Content="O"
+                            IsVisible="{TemplateBinding CenterVisible}" />
+                        <Button
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            Command="{TemplateBinding RightCommand}"
+                            Content="→" />
+                        <Button
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Command="{TemplateBinding DownCommand}"
+                            Content="↓" />
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

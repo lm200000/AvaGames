@@ -6,6 +6,7 @@ namespace CrossGames.Controls
 {
     public class MatrixGrid : TemplatedControl
     {
+        #region Matrix Properties
         public static readonly StyledProperty<int> matrix11Property =
             AvaloniaProperty.Register<MatrixGrid, int>(nameof(matrix11), 0);
         public static readonly StyledProperty<int> matrix12Property =
@@ -38,6 +39,9 @@ namespace CrossGames.Controls
             AvaloniaProperty.Register<MatrixGrid, int>(nameof(matrix43), 0);
         public static readonly StyledProperty<int> matrix44Property =
             AvaloniaProperty.Register<MatrixGrid, int>(nameof(matrix44), 0);
+        #endregion
+
+        #region Matrix Accessors
         public int matrix11
         {
             get => GetValue(matrix11Property);
@@ -118,6 +122,8 @@ namespace CrossGames.Controls
             get => GetValue(matrix44Property);
             set => SetValue(matrix44Property, value);
         }
+        #endregion
+
         protected override Size MeasureOverride(Size availableSize)
         {
             var min = Math.Min(availableSize.Height, availableSize.Width);
