@@ -1,0 +1,31 @@
+﻿<ResourceDictionary
+	xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:CrossGames.Controls">
+    <Design.PreviewWith>
+		<local:Cubebox Number="0" Width="100" Height="100"/>
+    </Design.PreviewWith>
+	<ControlTheme x:Key="{x:Type local:Cubebox}" TargetType="local:Cubebox">
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="Template">
+			<ControlTemplate TargetType="local:Cubebox">
+				 <Border
+                    Background="{TemplateBinding BackgroundColor}"
+                    CornerRadius="10">
+                    <Panel>
+                       <TextBlock Text="{TemplateBinding Number}"
+                                  FontSize="25"
+                                  FontWeight="Bold"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                    </Panel>                     
+                     <Border.Transitions>
+                         <Transitions>
+                             <BrushTransition Duration="0:0:0.2" Property="Background"/>
+                         </Transitions>						 
+                     </Border.Transitions>
+                </Border>
+			</ControlTemplate>
+		</Setter>
+	</ControlTheme>
+</ResourceDictionary>

@@ -1,0 +1,35 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:CrossGames.Controls">
+  <Design.PreviewWith>
+		<local:MatrixGrid Width="400" Height="400"/>
+    </Design.PreviewWith>
+	<ControlTheme x:Key="{x:Type local:MatrixGrid}" TargetType="local:MatrixGrid">
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="Template">
+			<ControlTemplate TargetType="local:MatrixGrid">
+				<Grid ColumnDefinitions="*,*,*,*"
+					  RowSpacing="2"
+					  ColumnSpacing="2"
+					  RowDefinitions="*,*,*,*">
+					<local:Cubebox Grid.Row="0" Grid.Column="0" Number="{TemplateBinding matrix11}"/>
+                    <local:Cubebox Grid.Row="0" Grid.Column="1" Number="{TemplateBinding matrix12}"/>
+                    <local:Cubebox Grid.Row="0" Grid.Column="2" Number="{TemplateBinding matrix13}"/>
+                    <local:Cubebox Grid.Row="0" Grid.Column="3" Number="{TemplateBinding matrix14}"/>
+                    <local:Cubebox Grid.Row="1" Grid.Column="0" Number="{TemplateBinding matrix21}"/>
+                    <local:Cubebox Grid.Row="1" Grid.Column="1" Number="{TemplateBinding matrix22}"/>
+                    <local:Cubebox Grid.Row="1" Grid.Column="2" Number="{TemplateBinding matrix23}"/>
+                    <local:Cubebox Grid.Row="1" Grid.Column="3" Number="{TemplateBinding matrix24}"/>
+                    <local:Cubebox Grid.Row="2" Grid.Column="0" Number="{TemplateBinding matrix31}"/>
+                    <local:Cubebox Grid.Row="2" Grid.Column="1" Number="{TemplateBinding matrix32}"/>
+                    <local:Cubebox Grid.Row="2" Grid.Column="2" Number="{TemplateBinding matrix33}"/>
+                    <local:Cubebox Grid.Row="2" Grid.Column="3" Number="{TemplateBinding matrix34}"/>
+                    <local:Cubebox Grid.Row="3" Grid.Column="0" Number="{TemplateBinding matrix41}"/>
+                    <local:Cubebox Grid.Row="3" Grid.Column="1" Number="{TemplateBinding matrix42}"/>
+                    <local:Cubebox Grid.Row="3" Grid.Column="2" Number="{TemplateBinding matrix43}"/>
+                    <local:Cubebox Grid.Row="3" Grid.Column="3" Number="{TemplateBinding matrix44}"/> 
+				</Grid>
+			</ControlTemplate>
+		</Setter>
+	</ControlTheme>
+</ResourceDictionary>
