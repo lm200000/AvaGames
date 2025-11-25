@@ -18,11 +18,11 @@ public partial class MainViewModel : ViewModelBase
         var pageName = parameter.ToString();
         switch (pageName)
         {
-            case "1":
+            case "2048":
                 CurrentViewModel = new Page2048ViewModel();
                 break;
-            case "2":
-
+            case "others":
+                //TODO: add other games
                 break;
             default:
                 break;
