@@ -25,6 +25,13 @@ namespace CrossGames.Controls
             AvaloniaProperty.Register<Handlebar, ICommand>(nameof(CenterCommand));
         public static readonly StyledProperty<bool> CenterVisibleProperty =
             AvaloniaProperty.Register<Handlebar, bool>(nameof(CenterVisible),false);
+        public static readonly StyledProperty<bool> UpVisibleProperty =
+            AvaloniaProperty.Register<Handlebar, bool>(nameof(UpVisible), true);
+        public bool UpVisible
+        {
+            get => GetValue(UpVisibleProperty);
+            set => SetValue(UpVisibleProperty, value);
+        }
         public bool CenterVisible
         {
             get => GetValue(CenterVisibleProperty);

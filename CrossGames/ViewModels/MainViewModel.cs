@@ -21,8 +21,8 @@ public partial class MainViewModel : ViewModelBase
             case "2048":
                 CurrentViewModel = new Page2048ViewModel();
                 break;
-            case "others":
-                //TODO: add other games
+            case "Tetris":
+                CurrentViewModel = new PageTetrisViewModel();
                 break;
             default:
                 break;

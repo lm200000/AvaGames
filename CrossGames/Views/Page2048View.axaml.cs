@@ -30,7 +30,6 @@ public partial class Page2048View : UserControl
             ? manager
             : new WindowNotificationManager(topLevel);
     }
-    private int id = 0;
     private void HandleScrollGes(Page2048View w, ScrollGestureEventArgs e)
     {
         //if (w.DataContext is Page2048ViewModel vm)

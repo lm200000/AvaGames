@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:CrossGames.Common"
     xmlns:local="clr-namespace:CrossGames.Controls">
     <Design.PreviewWith>
         <local:TCube Width="100" Height="100" />
@@ -10,16 +11,48 @@
         <Setter Property="Template">
             <ControlTemplate TargetType="local:TCube">
                 <Border
-                    BorderBrush="Black"
-                    BorderThickness="1"
-                    CornerRadius="0">
-                    <Rectangle Width="20" Height="20" />
-                    <Border.Background>
-						<LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-							<GradientStop Color="{TemplateBinding TopColor}" Offset="0.0" />
-                            <GradientStop Color="{TemplateBinding BottomColor}" Offset="1.0" />
-                        </LinearGradientBrush>
-                    </Border.Background>
+                    Background="{TemplateBinding BottomColor}"
+                    BorderBrush="Black" 
+                    BorderThickness="1">
+                    <Grid
+                        ColumnDefinitions="2*,5*,2*"
+                        IsVisible="{TemplateBinding Visible}"
+                        RowDefinitions="2*,5*,2*">
+                        <Grid.Styles>
+                            <Style Selector="Line">
+                                <Setter Property="Stroke" Value="Black" />
+                                <Setter Property="StrokeThickness" Value="2" />
+                            </Style>
+                            <Style Selector="Border">
+                                <Setter Property="Background" Value="{TemplateBinding TopColor}" />
+                            </Style>
+                        </Grid.Styles>
+                        <Polygon
+                            Grid.Row="0"
+                            Grid.RowSpan="1"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="1"
+                            Fill="{TemplateBinding TopColor}"
+                            Points="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=Bounds, Converter={x:Static converters:Bounds2PointConverter.Instance}, ConverterParameter=Center}" />
+                        <Border
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            BorderBrush="Black"
+                            BorderThickness="2.5" />
+                        <Grid Grid.Row="0" Grid.Column="0">
+                            <Line StartPoint="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=Bounds, Converter={x:Static converters:Bounds2PointConverter.Instance}, ConverterParameter=TopLeft}" EndPoint="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=Bounds, Converter={x:Static converters:Bounds2PointConverter.Instance}, ConverterParameter=BottomRight}" />
+                        </Grid>
+                        <Grid Grid.Row="2" Grid.Column="0">
+                            <Line StartPoint="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=Bounds, Converter={x:Static converters:Bounds2PointConverter.Instance}, ConverterParameter=TopRight}" EndPoint="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=Bounds, Converter={x:Static converters:Bounds2PointConverter.Instance}, ConverterParameter=BottomLeft}" />
+                        </Grid>
+                        <Grid Grid.Row="0" Grid.Column="2">
+                            <Line StartPoint="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=Bounds, Converter={x:Static converters:Bounds2PointConverter.Instance}, ConverterParameter=TopRight}" EndPoint="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=Bounds, Converter={x:Static converters:Bounds2PointConverter.Instance}, ConverterParameter=BottomLeft}" />
+                        </Grid>
+                        <Grid Grid.Row="2" Grid.Column="2">
+                            <Line StartPoint="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=Bounds, Converter={x:Static converters:Bounds2PointConverter.Instance}, ConverterParameter=TopLeft}" EndPoint="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=Bounds, Converter={x:Static converters:Bounds2PointConverter.Instance}, ConverterParameter=BottomRight}" />
+                        </Grid>
+
+                    </Grid>
                 </Border>
             </ControlTemplate>
         </Setter>

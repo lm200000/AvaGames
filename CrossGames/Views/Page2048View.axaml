@@ -13,9 +13,6 @@
     <Design.DataContext>
         <vm:Page2048ViewModel />
     </Design.DataContext>
-    <UserControl.DataContext>
-        <vm:Page2048ViewModel />
-    </UserControl.DataContext>
 
     <Grid RowDefinitions="40,*,auto">
         <StackPanel

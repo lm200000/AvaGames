@@ -1,11 +1,56 @@
-﻿<UserControl xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             xmlns:controls="clr-namespace:CrossGames.Controls"
-             x:Class="CrossGames.Views.PageTetrisView">
-  <StackPanel>
-	  <controls:TCube Height="80" Width="80" Shape="O"/>
-  </StackPanel>
+﻿<UserControl
+    x:Class="CrossGames.Views.PageTetrisView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:CrossGames.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:CrossGames.ViewModels"
+    d:DesignHeight="500"
+    d:DesignWidth="240"
+    x:DataType="vm:PageTetrisViewModel"
+    mc:Ignorable="d">    
+    <Grid RowDefinitions="auto,*,auto,auto">
+        <TextBlock
+            HorizontalAlignment="Center"
+            FontSize="22"
+            Text="Tetris Game" />
+        <Grid Grid.Row="1" ColumnDefinitions="*,auto">
+           <!--<ItemsControl ItemsSource="{Binding Cells}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="12" Rows="24" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <controls:TCube Shape="{Binding Shape}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                </ItemsControl>-->
+                <controls:TetrisGrid Cells="{Binding Cells}" Margin="5"/>
+            <StackPanel Grid.Column="1" Spacing="10" Margin="5">
+                <TextBlock Text="下一个：" />
+                <TextBlock Text="当前分数：" />
+                <TextBlock Text="{Binding matrix.Score}" />
+                <TextBlock Text="历史记录：" />
+                <TextBlock Text="{Binding matrix.Score}" />
+                
+            </StackPanel>
+        </Grid>
+        <StackPanel Grid.Row="2" Spacing="1" HorizontalAlignment="Center">
+			<StackPanel Orientation="Horizontal" Spacing="1">
+				<Button Content="1"/>
+                <Button Content="2"/>
+                <Button Content="3"/>
+            </StackPanel>
+            <Button Content="4"/>
+        </StackPanel>
+        <Button
+            Grid.Row="3"
+            Content="暂停"
+            Margin="0,10"
+            Command="{Binding matrix.pasueCommand}"
+            FontFamily="{StaticResource simyou}" />
+    </Grid>
 </UserControl>

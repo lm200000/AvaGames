@@ -4,5 +4,6 @@
         <ResourceInclude Source="MatrixGrid.axaml" />
         <ResourceInclude Source="Handlebar.axaml" />
         <ResourceInclude Source="TCube.axaml" />
+        <ResourceInclude Source="TetrisGrid.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

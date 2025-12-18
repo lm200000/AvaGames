@@ -1,0 +1,26 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:CrossGames.Controls">
+  <Design.PreviewWith>
+		<local:TetrisGrid Width="200" Height="400"/>
+    </Design.PreviewWith>
+	<ControlTheme x:Key="{x:Type local:TetrisGrid}" TargetType="local:TetrisGrid">
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="Template">
+			<ControlTemplate TargetType="local:TetrisGrid">
+				<ItemsControl ItemsSource="{TemplateBinding Cells}">
+					<ItemsControl.ItemsPanel>
+						<ItemsPanelTemplate>
+							<UniformGrid Columns="12" Rows="24"/>
+						</ItemsPanelTemplate>
+					</ItemsControl.ItemsPanel>
+					<ItemsControl.ItemTemplate>
+						<DataTemplate>
+							<local:TCube Shape="{Binding $self.((local:TetrisCube)DataContext).Shape}"/>
+						</DataTemplate>
+					</ItemsControl.ItemTemplate>
+				</ItemsControl>
+			</ControlTemplate>
+		</Setter>
+	</ControlTheme>
+</ResourceDictionary>

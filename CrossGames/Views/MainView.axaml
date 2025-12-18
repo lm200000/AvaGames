@@ -24,6 +24,8 @@
                     <Setter Property="Theme" Value="{StaticResource PureCardRadioButton}" />
                     <Setter Property="IsVisible" Value="{Binding #Exp.IsExpanded}" />
                     <Setter Property="FontFamily" Value="{StaticResource simyou}" />
+                    <Setter Property="Command" Value="{Binding _navigateCommand}"/>
+                    <Setter Property="CommandParameter" Value="{Binding $self.Content}"/>
                     <Style Selector="^:checked">
                         <Setter Property="Foreground" Value="Orange" />
                     </Style>
@@ -31,7 +33,7 @@
             </StackPanel.Styles>
             <Expander x:Name="Exp" ExpandDirection="Left" />
             <RadioButton Content="2048" />
-            <RadioButton Content="Other" />
+            <RadioButton Content="Tetris" />
         </StackPanel>
         <ContentControl Grid.Column="1" Content="{Binding CurrentViewModel}" />
     </Grid>
