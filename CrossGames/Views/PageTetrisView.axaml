@@ -40,11 +40,11 @@
         </Grid>
         <StackPanel Grid.Row="2" Spacing="1" HorizontalAlignment="Center">
 			<StackPanel Orientation="Horizontal" Spacing="1">
-				<Button Content="1"/>
-                <Button Content="2"/>
-                <Button Content="3"/>
+				<Button Content="←" Command="{Binding matrix.MoveLeftCommand}"/>
+                <Button Content="O" Command="{Binding matrix.RotateCommand}"/>
+                <Button Content="→" Command="{Binding matrix.MoveRightCommand}"/>
             </StackPanel>
-            <Button Content="4"/>
+            <Button Content="↓" Command="{Binding matrix.MoveDownCommand}"/>
         </StackPanel>
         <Button
             Grid.Row="3"

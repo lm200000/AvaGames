@@ -147,6 +147,10 @@ namespace CrossGames.Models
                                     GridCells[px, py + 1].Shape = currentShape[x, y].Shape;
                                     GridCells[px, py + 1].IsActive = true;
                                 }
+                                else
+                                {
+                                    currentShape[x, y].PositionY += 1;
+                                }
                             }
                         }
                     }
@@ -177,6 +181,10 @@ namespace CrossGames.Models
                                     GridCells[px, py].Shape = TCubeShape.None;
                                     GridCells[px, py - 1].Shape = currentShape[x, y].Shape;
                                     GridCells[px, py - 1].IsActive = true;
+                                }
+                                else
+                                {
+                                    currentShape[x, y].PositionY -= 1;
                                 }
                             }
                         }
@@ -209,6 +217,10 @@ namespace CrossGames.Models
                                     GridCells[px + 1, py].Shape = currentShape[x, y].Shape;
                                     GridCells[px + 1, py].IsActive = true;
                                 }
+                                else
+                                {
+                                    currentShape[x, y].PositionX += 1;
+                                }
                             }
                         }
                     }
@@ -226,7 +238,45 @@ namespace CrossGames.Models
         [RelayCommand]
         private void Rotate()
         {
-            // Rotation logic to be implemented
+            if (currentShape is not null)
+            {
+                lock (_lock)
+                {
+                    int row = currentShape.GetLength(0);
+                    int col = currentShape.GetLength(1);
+                    var rotatedShape = RotateShape(currentShape);
+                    var px = currentShape[row - 1, 0].PositionX;
+                    var py = currentShape[row - 1, 0].PositionY;//记录左下角点位
+                    var moveX = px - col + 1;
+                    moveX= moveX < 0 ? Math.Abs(moveX) : 0;
+                    bool canRotate = true;
+                    for (int x = col - 1; x >= 0; x--)
+                    { 
+                        for (int y = 0; y < row; y++)
+                        {
+                            rotatedShape[x, y].PositionX = px - col + x + 1 + moveX;
+                            rotatedShape[x, y].PositionY = py + y;
+                            if (GridCells[px - col + x + 1+moveX, py + y].Shape != TCubeShape.None && GridCells[px - col + x + 1 + moveX, py + y].IsActive == false)
+                            {
+                                canRotate = false;
+                            }
+                        }
+                    }
+                    if (canRotate)
+                    {
+                        for (int x = 0; x < row; x++)
+                        {
+                            for (int y = 0; y < col; y++)
+                            {
+                                GridCells[currentShape[x, y].PositionX, currentShape[x, y].PositionY].IsActive = false;
+                                GridCells[currentShape[x, y].PositionX, currentShape[x, y].PositionY].Shape = TCubeShape.None;
+                            }
+                        }
+                        currentShape = rotatedShape;
+                        AddShapeToGrid();
+                    }
+                }
+            }
         }
         /// <summary>
         /// 检查当前对象是否可向右移动
@@ -330,13 +380,24 @@ namespace CrossGames.Models
             }
             return true;
         }
-
-        private bool CanRotate()
+        private TetrisCube[,] RotateShape(TetrisCube[,] shape)
         {
-            // Rotation check logic to be implemented
-            return true;
+            int rows = shape.GetLength(0);
+            int cols = shape.GetLength(1);
+            TetrisCube[,] rotatedShape = new TetrisCube[cols, rows];
+            for (int x = 0; x < rows; x++)
+            {
+                for (int y = 0; y < cols; y++)
+                {
+                    rotatedShape[y, rows - 1 - x] = new(shape[x, y].PositionX, shape[x, y].PositionY, shape[x, y].Shape);
+                    if (shape[x, y].IsActive)
+                    {
+                        rotatedShape[y, rows - 1 - x].IsActive = true;
+                    }
+                }
+            }
+            return rotatedShape;
         }
-
         private void CheckAddScore()
         {
             for(int x = 0; x < 24; x++)
